@@ -112,7 +112,7 @@ class Emulator:
         config.global_config_init(config_path)
         self.mu = Uc(UC_ARCH_ARM, UC_MODE_ARM)
         self.__vfs_root = vfs_root
-
+        self.native_params = False
         if vfp_inst_set:
             self._enable_vfp()
         #

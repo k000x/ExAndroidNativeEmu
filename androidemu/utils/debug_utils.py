@@ -86,6 +86,10 @@ def get_module_by_addr(emu, addr):
 
 # print code and its moudle in a line
 def dump_code(emu, address, size, fd):
+    dump_code_filter(emu, address, size, fd, '', True)
+
+# print code and its moudle in a line
+def dump_code_filter(emu, address, size, fd, filter_name, write_file=True):
 
     #判断是否arm，用不同的decoder
     mu = emu.mu
@@ -127,7 +131,8 @@ def dump_code(emu, address, size, fd):
         if (regs != ""):
             line = "%s\t;(%s)"%(line, regs)
         #
-        fd.write(line+"\n")
+        if write_file:
+            fd.write(line+"\n")
 #
 
 def dump_stack(emu, fd, max_deep=512):

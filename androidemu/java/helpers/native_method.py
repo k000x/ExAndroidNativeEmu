@@ -66,6 +66,8 @@ def native_read_args(mu, args_count):
 
 
 def native_translate_arg(emu, val):
+    if emu.native_params:
+        return val
     if isinstance(val, int):
         return val
     elif isinstance(val, bytearray):
